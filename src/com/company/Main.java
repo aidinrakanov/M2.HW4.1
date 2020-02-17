@@ -3,11 +3,10 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Runner runner = new Runner();
-        new Thread(runner).start();
 
+        Thread runner = new Thread(new Runner());
 
-
+        runner.start();
 
     }
 }
