@@ -23,6 +23,7 @@ public class Runner extends Thread {
                 System.out.println("Runner " + i + " бежит к Runner " + previous);
                 sleep(1000);
             }
+            System.out.println("Runner 1 берет палочку" );
 
         } catch (Exception m) {
         }
