@@ -1,32 +1,36 @@
-
 package com.company;
 
 public class Runner extends Thread {
+    private int id;
+    private int diraction;
 
-    public void run() {
+    public Runner(int id, int diraction) {
+        this.id = id;
+        this.diraction = diraction;
+    }
+
+    public synchronized void run() {
         try {
-            for (int i = 1; i < 5; i++) {
-                int next = i + 1;
-                System.out.println("Runner " + i + " берет палочку");
-                System.out.println("Runner " + i + " бежит к Runner " + next);
+            if (id < 5 && diraction==1) {
+                System.out.println("Runner "+id+" beret palochku");
+                System.out.println("Runner "+id+" bezhit k runner "+(id+1));
                 sleep(1000);
             }
-            System.out.println("Runner 5 берет палочку" );
-            System.out.println("Runner 5 бежит к финишу" );
-            sleep(1000);
+            if (id == 5 ) {
+                System.out.println("Runner "+id+" beret palochku");
+                System.out.println("Runner "+id+" bezhit k finishu");
+                sleep(1000);
+                System.out.println("Runner "+id+" bezhit k runner "+(id-1));
 
-            System.out.println("Runner 5 бежит к Runner 4");
-            sleep(1000);
-            for (int i = 4; i > 1; i--) {
-                int previous = i -1;
-                System.out.println("Runner " + i + " берет палочку");
-                System.out.println("Runner " + i + " бежит к Runner " + previous);
+            }
+            if (id > 1 && diraction==-1) {
+                System.out.println("Runner "+id+" beret palochku");
+                System.out.println("Runner "+id+" bezhit k runner "+(id-1));
                 sleep(1000);
             }
-            System.out.println("Runner 1 берет палочку" );
-
-        } catch (Exception m) {
-        }
+            if (id == 1 && diraction==-1) {
+                System.out.println("Runner "+id+" beret palochku");
+            }
+        } catch (Exception e) {}
     }
 }
-
